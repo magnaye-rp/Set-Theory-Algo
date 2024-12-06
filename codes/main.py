@@ -37,11 +37,69 @@ def find_equal_sets(sets_list):
         print("No equal sets found.")
         
 # Perform operations on sets
-# def set_operations(sets_list):
+def operation_set_menu():
+    print("\n--- Set Operations Menu ---")
+    print("1. Union")
+    print("2. Intersection")
+    print("3. Difference (A - B)")
+    print("4. Difference (B - A)")
+    print("5. Symmetric Difference")
+    print("6. Complement (relative to B)")
+    print("7. Check if Disjoint")
+    print("8. Back to Main Menu")
     
+# Perform operations on sets
+def set_operations(sets_list):
+    # Check if there are enough sets for operations
+    if len(sets_list) < 2:
+        print("\nAt least two sets are required for operations.")
+        return
+
+    while True:
+        operation_set_menu()
+        choice = input("Enter your choice: ")
+        if choice == '8':
+            break
+
+        display(sets_list) # Display sets for selection
+        try:
+            print("\nChoose Sets to Perform Operation Set")
+            set1_index = int(input("Enter the number of the first set: ")) - 1
+            set2_index = int(input("Enter the number of the second set: ")) - 1
+            
+            # Validate indices for selected sets
+            if set1_index < 0 or set1_index >= len(sets_list) or set2_index < 0 or set2_index >= len(sets_list):
+                print("Invalid set numbers. Please try again.")
+                continue
+                
+            # Retrieve the selected sets
+            set1 = sets_list[set1_index]
+            set2 = sets_list[set2_index]
+        
+            # Perform the selected operation
+            if choice == '1': # Inion 
+                union_set = set1.union(set2)
+                print(f"\nUnion of Set {set1_index + 1} and Set {set2_index + 1}: {union_set}")
+            elif choice == '2': # Intersection 
+                intersection_set = set1.intersection(set2)
+                print(f"\nIntersection of Set {set1_index + 1} and Set {set2_index + 1}: {intersection_set}")
+            elif choice == '3': # Difference set1 to set2
+                diff_set1_set2 = set1.difference(set2)
+                print(f"\nDifference (Set {set1_index + 1} - Set {set2_index + 1}): {diff_set1_set2}")
+            
+            # Difference of set 2 ro to set 1
+            # Symmetric Difference
+            # Compliment of set 
+            # Disjoint 
+            else:
+                print("Invalid operation choice. Please try again.")
+        except ValueError:
+            print("Invalid input. Please enter valid set numbers.")
+
 # User Input
 def user_input():
-    print("Set Theory Algorithm\n")
+    print("SET THEORY ALGORITHM\n")
+    print("Create set/s:")
     num_of_sets = int(input("How many Sets do you want: "))  # Number of sets
     sets_list = []  # Initialize the list to hold the sets
 
@@ -54,8 +112,8 @@ def user_input():
         s = set(s_list)  # Convert list to set
         sets_list.append(s)
     return sets_list
-
-def menu():
+    
+def set_theory_menu():
     print("\n--- Set Theory Menu ---")
     print("1. Display Sets")
     print("2. Find Proper Subsets")
@@ -67,7 +125,7 @@ def main():
     sets_list = user_input()
 
     while True:
-        menu()
+        set_theory_menu()
         choice = input("Enter your choice: ")
 
         if choice == '1':
