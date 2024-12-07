@@ -8,7 +8,7 @@ def clear_screen():
 def display(sets_list):
     print("\nEntered Sets:")
     for i, s in enumerate(sets_list, start=1):
-        print(f"Set {i}: {s}")
+        print(f"\tSet {i}: {s}")
 
 
 # Generate subsets (Power Set)
@@ -21,7 +21,7 @@ def generate_subsets(input_set):
 def find_proper_subsets(sets_list):
     print("\nProper Subsets from Entered Sets:")
     for i, main_set in enumerate(sets_list, start=1):
-        print(f"\nProper Subsets of Set {i} ({main_set}):")
+        print(f"\tProper Subsets of Set {i} ({main_set}):")
         proper_subsets = [subset for subset in generate_subsets(main_set) if subset != main_set]
         if proper_subsets:
             for subset in proper_subsets:
@@ -40,7 +40,7 @@ def find_equal_sets(sets_list):
                 print(f"Set {i + 1} is equal to Set {j + 1}: {sets_list[i]}")
                 found_equal = True
     if not found_equal:
-        print("No equal sets found.")
+        print("\tNo equal sets found.")
     input("Press Enter to continue...")
 
 def union_of_all(sets_list):
@@ -48,7 +48,7 @@ def union_of_all(sets_list):
     union_set = set()
     for s in sets_list:
         union_set = union_set.union(s)
-    print("U = ", union_set)
+    print("\tU = ", union_set)
     input("Press Enter to continue...")
 
 def intersection_of_all(sets_list):
@@ -56,21 +56,23 @@ def intersection_of_all(sets_list):
     intersection_set = sets_list[0]
     for i in range(1, len(sets_list)):
         intersection_set = intersection_set.intersection(sets_list[i])
-    print("∩ = ", intersection_set)
+    print("\t∩ = ", intersection_set)
     input("Press Enter to continue...")
 
 
 # Perform operations on sets
 def operation_set_menu():
     clear_screen()
-    print("\n--- Set Operations Menu ---")
-    print("1. Union")
-    print("2. Intersection")
-    print("3. Difference (A - B)")
-    print("4. Symmetric Difference")
-    print("5. Complement")
-    print("6. Check if Disjoint")
-    print("7. Back to Main Menu")
+    print(" -----------------------")
+    print("|  Set Operations Menu  |")
+    print(" -----------------------")
+    print("\t[1] Union")
+    print("\t[2] Intersection")
+    print("\t[3] Difference (A - B)")
+    print("\t[4] Symmetric Difference")
+    print("\t[5] Complement")
+    print("\t[6] Check if Disjoint")
+    print("\t[7] Back to Main Menu")
     
 # Perform operations on sets
 def set_operations(sets_list):
@@ -152,7 +154,9 @@ def set_operations(sets_list):
 # User Input
 def user_input():
     try:
-        print("SET THEORY ALGORITHM\n")
+        print("\n\t ------------------------ ")
+        print("\t|  SET THEORY ALGORITHM  |")
+        print("\t ------------------------ \n")
         print("Create set/s:")
         num_of_sets = int(input("How many Sets do you want: "))  # Number of sets
         sets_list = []  # Initialize the list to hold the sets
@@ -175,14 +179,16 @@ def user_input():
     
 def set_theory_menu():
     clear_screen()
-    print("\n--- Set Theory Menu ---")
-    print("1. Display Sets")
-    print("2. Find Proper Subsets")
-    print("3. Find Equal Sets")
-    print("4. Union of All Sets")
-    print("5. Intersection of All Sets")
-    print("6. Perform Operations on Sets")
-    print("7. Exit")
+    print("\n ------------------- ")
+    print("|  Set Theory Menu  |")
+    print(" ------------------- ")
+    print("\t[1] Display Sets.")
+    print("\t[2] Find Proper Subsets.")
+    print("\t[3] Find Equal Sets.")
+    print("\t[4] Union of All Sets.")
+    print("\t[5] Intersection of All Sets.")
+    print("\t[6] Perform Operations on Sets.")
+    print("\t[7] Exit")
     
 def main():
     sets_list = user_input()
