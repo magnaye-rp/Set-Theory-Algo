@@ -102,6 +102,8 @@ def set_operations(sets_list):
                 continue
                 
             # Retrieve the selected sets
+            set1 = 0
+            set2 = 0
             if choice != '5':
                 set1 = sets_list[set1_index]
                 set2 = sets_list[set2_index]
